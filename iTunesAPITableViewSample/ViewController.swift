@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
@@ -15,6 +17,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var jsonDict:NSDictionary = [:]
     var musicArray:NSArray = []
     var musicCount:Int = 0
+    
+    var player:AVPlayer = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func getAPI(){
         //iTunesのAPIを叩いてJSONを取得するメソッド
         
-        var urlString = "https://itunes.apple.com/search?term=fear-and-loathing-in-las-vegas&country=JP&lang=ja_jp&media=music" //API(url)の文字列を生成する
+        var urlString = "https://itunes.apple.com/search?term=beatles&country=JP&lang=ja_jp&media=music" //API(url)の文字列を生成する
         var url = NSURL(string: urlString) //URLの文字列をURL型に変換
         var data = NSData(contentsOfURL: url!) //URLをData型に変換
         jsonDict = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary //jsonに変換
@@ -76,7 +80,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //選択した要素の曲を再生する
         
+        var previewULR = musicArray[indexPath.row]["previewUrl"] as! String //曲のurl(string)を取得
+        var musicURL = NSURL(string: previewULR) //stringをurlに変換
+        player = AVPlayer(URL: musicURL) //urlの曲をavPlayerにセット
+        player.play() //曲を再生
     }
     
     override func prefersStatusBarHidden() -> Bool {
