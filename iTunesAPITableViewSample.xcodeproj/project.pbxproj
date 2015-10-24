@@ -13,6 +13,8 @@
 		DCF299721BDBC0E500756C20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF299711BDBC0E500756C20 /* Images.xcassets */; };
 		DCF299751BDBC0E500756C20 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCF299731BDBC0E500756C20 /* LaunchScreen.xib */; };
 		DCF299811BDBC0E600756C20 /* iTunesAPITableViewSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF299801BDBC0E600756C20 /* iTunesAPITableViewSampleTests.swift */; };
+		DCF2998C1BDBC27A00756C20 /* musicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2998A1BDBC27A00756C20 /* musicTableViewCell.swift */; };
+		DCF2998D1BDBC27A00756C20 /* musicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCF2998B1BDBC27A00756C20 /* musicTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		DCF2997A1BDBC0E600756C20 /* iTunesAPITableViewSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesAPITableViewSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF2997F1BDBC0E600756C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCF299801BDBC0E600756C20 /* iTunesAPITableViewSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPITableViewSampleTests.swift; sourceTree = "<group>"; };
+		DCF2998A1BDBC27A00756C20 /* musicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicTableViewCell.swift; sourceTree = "<group>"; };
+		DCF2998B1BDBC27A00756C20 /* musicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = musicTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				DCF2996A1BDBC0E500756C20 /* AppDelegate.swift */,
 				DCF2996C1BDBC0E500756C20 /* ViewController.swift */,
 				DCF2996E1BDBC0E500756C20 /* Main.storyboard */,
+				DCF2998A1BDBC27A00756C20 /* musicTableViewCell.swift */,
+				DCF2998B1BDBC27A00756C20 /* musicTableViewCell.xib */,
 				DCF299711BDBC0E500756C20 /* Images.xcassets */,
 				DCF299731BDBC0E500756C20 /* LaunchScreen.xib */,
 				DCF299681BDBC0E500756C20 /* Supporting Files */,
@@ -195,6 +201,7 @@
 				DCF299701BDBC0E500756C20 /* Main.storyboard in Resources */,
 				DCF299751BDBC0E500756C20 /* LaunchScreen.xib in Resources */,
 				DCF299721BDBC0E500756C20 /* Images.xcassets in Resources */,
+				DCF2998D1BDBC27A00756C20 /* musicTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF2996D1BDBC0E500756C20 /* ViewController.swift in Sources */,
+				DCF2998C1BDBC27A00756C20 /* musicTableViewCell.swift in Sources */,
 				DCF2996B1BDBC0E500756C20 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
