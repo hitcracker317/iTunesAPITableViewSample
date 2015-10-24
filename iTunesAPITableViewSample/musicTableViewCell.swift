@@ -11,7 +11,7 @@ import UIKit
 class musicTableViewCell: UITableViewCell {
 
     @IBOutlet weak var artWorkImageView: UIImageView!
-    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var albumLabel: UILabel!
     @IBOutlet weak var songTitleLabel: UILabel!
     
     override func awakeFromNib() {
