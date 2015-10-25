@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import AFNetworking
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate{
 
     @IBOutlet weak var musicTableView: UITableView!
+    @IBOutlet weak var musicSearchBar: UISearchBar!
     
     var jsonDict:NSDictionary = [:]
     var musicArray:NSArray = []
@@ -23,13 +25,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var nib:UINib = UINib(nibName:"musicTableViewCell", bundle: nil)
         musicTableView.registerNib(nib, forCellReuseIdentifier:"musicTableViewCell")
         
-        self.getAPI()
     }
     
-    func getAPI(){
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        //サーチバーに入力した情報を元に曲を取得
+        
+        musicSearchBar.resignFirstResponder()
+        
+        let searchText = searchBar.text.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        
+        if((searchText) != nil){
+            self.getAPI(searchText:searchText!)
+        }
+    }
+    
+    func getAPI(#searchText:String){
         //iTunesのAPIを叩いてJSONを取得するメソッド
         
-        var urlString = "https://itunes.apple.com/search?term=fear-and-loathing-in-las-vegas&country=JP&lang=ja_jp&media=music" //API(url)の文字列を生成する
+        var urlString = "https://itunes.apple.com/search?term=\(searchText)&country=JP&lang=ja_jp&media=music" //API(url)の文字列を生成する
+        
         var url = NSURL(string: urlString) //URLの文字列をURL型に変換
         var data = NSData(contentsOfURL: url!) //URLをData型に変換
         jsonDict = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary //jsonに変換
@@ -47,6 +61,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         println("取得した曲数\(musicCount)")
         
         musicArray = jsonDict["results"] as! NSArray //API叩いて取得した曲の情報(NSDictionary)を格納する配列
+        
+        self.musicTableView.reloadData() // 再描画
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
