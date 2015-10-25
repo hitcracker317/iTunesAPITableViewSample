@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class musicTableViewCell: UITableViewCell {
 
@@ -34,9 +35,7 @@ class musicTableViewCell: UITableViewCell {
         //アートワークをセット
         var artWorkURL = artWork
         var imageURL = NSURL(string: artWorkURL)
-        var imageData = NSData(contentsOfURL: imageURL!)
-        var image = UIImage(data: imageData!)
-        artWorkImageView.image = image
+        artWorkImageView.sd_setImageWithURL(imageURL)
 
     }
     
