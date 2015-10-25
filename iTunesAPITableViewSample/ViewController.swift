@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
-import AVKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
@@ -16,9 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var jsonDict:NSDictionary = [:]
     var musicArray:NSArray = []
+    var musicDictionary:NSDictionary = [:]
     var musicCount:Int = 0
-    
-    var player:AVPlayer = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func getAPI(){
         //iTunesのAPIを叩いてJSONを取得するメソッド
         
-        var urlString = "https://itunes.apple.com/search?term=beatles&country=JP&lang=ja_jp&media=music" //API(url)の文字列を生成する
+        var urlString = "https://itunes.apple.com/search?term=fear-and-loathing-in-las-vegas&country=JP&lang=ja_jp&media=music" //API(url)の文字列を生成する
         var url = NSURL(string: urlString) //URLの文字列をURL型に変換
         var data = NSData(contentsOfURL: url!) //URLをData型に変換
         jsonDict = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary //jsonに変換
@@ -61,31 +58,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        musicDictionary = musicArray[indexPath.row] as! NSDictionary
+        
         let cell: musicTableViewCell = tableView.dequeueReusableCellWithIdentifier("musicTableViewCell", forIndexPath: indexPath) as! musicTableViewCell
         
-        //アルバム名をセット
-        cell.albumLabel.text = musicArray[indexPath.row]["collectionCensoredName"] as? String
+        var albumString = musicDictionary["collectionCensoredName"] as? String
+        var songTitleString = musicDictionary["trackName"] as? String
+        var artWorkStoring = musicDictionary["artworkUrl100"] as! String
         
-        //曲名をセット
-        cell.songTitleLabel.text = musicArray[indexPath.row]["trackName"] as? String
-        
-        //アートワークをセット
-        var artWorkURL = musicArray[indexPath.row]["artworkUrl100"] as! String
-        var imageURL = NSURL(string: artWorkURL)
-        var imageData = NSData(contentsOfURL: imageURL!)
-        var image = UIImage(data: imageData!)
-        cell.artWorkImageView.image = image
+        cell.setMusicInfo(album: albumString!, songTitle: songTitleString!, artWork: artWorkStoring)
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //選択した要素の曲を再生する
-        
-        var previewULR = musicArray[indexPath.row]["previewUrl"] as! String //曲のurl(string)を取得
-        var musicURL = NSURL(string: previewULR) //stringをurlに変換
-        player = AVPlayer(URL: musicURL) //urlの曲をavPlayerにセット
-        player.play() //曲を再生
+        musicDictionary =  musicArray[indexPath.row] as! NSDictionary
+        self.performSegueWithIdentifier("detail", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "detail"){
+            
+            //遷移先に選択したセルのdicitionaryを渡す
+            var detailViewController = segue.destinationViewController as! DetailViewController
+            detailViewController.musicDict = musicDictionary
+        }
     }
     
     override func prefersStatusBarHidden() -> Bool {

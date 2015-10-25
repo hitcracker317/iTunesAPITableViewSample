@@ -15,6 +15,7 @@
 		DCF299811BDBC0E600756C20 /* iTunesAPITableViewSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF299801BDBC0E600756C20 /* iTunesAPITableViewSampleTests.swift */; };
 		DCF2998C1BDBC27A00756C20 /* musicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2998A1BDBC27A00756C20 /* musicTableViewCell.swift */; };
 		DCF2998D1BDBC27A00756C20 /* musicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCF2998B1BDBC27A00756C20 /* musicTableViewCell.xib */; };
+		DCF2998F1BDBECF500756C20 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2998E1BDBECF500756C20 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		DCF299801BDBC0E600756C20 /* iTunesAPITableViewSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPITableViewSampleTests.swift; sourceTree = "<group>"; };
 		DCF2998A1BDBC27A00756C20 /* musicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicTableViewCell.swift; sourceTree = "<group>"; };
 		DCF2998B1BDBC27A00756C20 /* musicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = musicTableViewCell.xib; sourceTree = "<group>"; };
+		DCF2998E1BDBECF500756C20 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				DCF2996A1BDBC0E500756C20 /* AppDelegate.swift */,
 				DCF2996C1BDBC0E500756C20 /* ViewController.swift */,
+				DCF2998E1BDBECF500756C20 /* DetailViewController.swift */,
 				DCF2996E1BDBC0E500756C20 /* Main.storyboard */,
 				DCF2998A1BDBC27A00756C20 /* musicTableViewCell.swift */,
 				DCF2998B1BDBC27A00756C20 /* musicTableViewCell.xib */,
@@ -222,6 +225,7 @@
 				DCF2996D1BDBC0E500756C20 /* ViewController.swift in Sources */,
 				DCF2998C1BDBC27A00756C20 /* musicTableViewCell.swift in Sources */,
 				DCF2996B1BDBC0E500756C20 /* AppDelegate.swift in Sources */,
+				DCF2998F1BDBECF500756C20 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

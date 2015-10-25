@@ -24,4 +24,20 @@ class musicTableViewCell: UITableViewCell {
 
     }
     
+    func setMusicInfo(#album:String,songTitle:String,artWork:String){
+        //アルバム名をセット
+        albumLabel.text = album
+        
+        //曲名をセット
+        songTitleLabel.text = songTitle
+        
+        //アートワークをセット
+        var artWorkURL = artWork
+        var imageURL = NSURL(string: artWorkURL)
+        var imageData = NSData(contentsOfURL: imageURL!)
+        var image = UIImage(data: imageData!)
+        artWorkImageView.image = image
+
+    }
+    
 }
